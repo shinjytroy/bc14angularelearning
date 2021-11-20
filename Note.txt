@@ -1,0 +1,48 @@
+Link repo: https://github.com/dpnguyen53/bc14angular
+Link repo: https://github.com/dpnguyen53/bc14angularrouting
+
+======= Buoi 1 =======
+* Component
+    - lệnh tạo: ng g c "Ten Component"
+
+* Module
+    - lệnh tạo: ng g m "Ten Module"
+    - lệnh tạo: ng g c "Ten Component" --module="Ten folder"
+        => Tạo component bỏ vào module mong muốn
+
+======= Buoi 2 =======
+* DataBinding
+    - OnewayBinding
+        + Interpolation: {{}}
+        + PropertyBinding: []
+        + EventBinding: ()
+    - TwowayBinding: [()]
+
+* Directive
+        + Component
+        + structural directive
+            + ngIf
+            + ngSwitch
+            + ngFor
+        + attribute directive
+            + ngClass
+            + ngStyle
+            + attribute directive (tự định nghĩa)
+
+======= Buoi 3 =======
+    - Interaction
+        + Input: truyền dữ liệu từ component cha => component con
+        + Output: truyền dữ liệu từ component con => component cha
+        + ViewChild: Dom Component
+        + ViewChildren: Dom nhiều Component
+
+======= Buoi 4 =======
+    - exercise
+    - Routing:
+        + Routing Component
+        + Routing Module
+
+======= Buoi 5 =======
+    - Routing:
+        + Routing Module (Lazy)
+    - Service

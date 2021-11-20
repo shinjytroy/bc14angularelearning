@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="listCourse">
+      <div class="col-md-3" *ngFor="let course of listCourse">
+        <app-course [course]="course"></app-course>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<app-modal></app-modal>

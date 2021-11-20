@@ -1,0 +1,16 @@
+<div class="card">
+    <img class="card-img-top" [src]="course.hinhAnh" alt="" />
+    <div class="card-body">
+      <h4 class="card-title">{{ course.tenKhoaHoc }}</h4>
+      <p>{{course.moTa}}</p>
+      </div>
+      <!-- Truyền 1 param -->
+      <div class="card-footer">
+      <a class="btn btn-success" 
+      routerLink="/detail/{{course.maKhoaHoc}}"
+      >Detail</a>
+      <a class="btn btn-info"
+      routerLink="/detail/{{course.maKhoaHoc}}"
+      >Đăng ký</a>
+      </div>
+  </div>

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+                <div class="form-group">
+                    <label>Tài khoản:</label>
+                    <input type="text" class="form-control" name="taiKhoan" ngModel required #TaiKhoan="ngModel" minlength="7" maxlength="15"> 
+                    <div class="alert alert-danger" *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)">
+                        <!-- Nội dung kiểm tra thẻ rỗng -->
+                        <div *ngIf="TaiKhoan.errors.required">Tài khoản không được rỗng</div>
+                        <!-- Kiểm tra độ dài ký tự -->
+                        <div *ngIf="TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength">Độ dài phải từ 7 đến 15 ký tự</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mật Khẩu:</label>
+                    <input type="text" class="form-control" name="matKhau" ngModel>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" name="email" ngModel 
+                    required 
+                    #Email="ngModel" 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    <div class="alert alert-danger" *ngIf="Email.errors && (Email.dirty || Email.touched)">
+                        <div *ngIf="Email.errors.required">Email không được rỗng</div>
+                        <div *ngIf="Email.errors.pattern">Email không đúng định dạng</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Họ Tên:</label>
+                    <input type="text" class="form-control" name="hoTen" ngModel>
+                </div>
+                <div class="form-group">
+                    <label>Số ĐT:</label>
+                    <input type="number" class="form-control" name="soDT" ngModel>
+                </div>
+                <button class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

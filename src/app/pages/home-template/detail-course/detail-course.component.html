@@ -1,0 +1,22 @@
+<h3>GIỚI THIỆU KHÓA HỌC</h3>
+<div class="container">
+<div class="row">
+<div class="card col-md-8">
+    <div class="card-body">
+      <h5 class="card-title" style="font-size: 4rem;">{{course.tenKhoaHoc}}</h5>
+      <h3>{{course.danhMucKhoaHoc.tenDanhMucKhoaHoc}}</h3>
+      <p>Giáo Viên: {{course.nguoiTao.hoTen}}</p>
+      <p>Ngày tạo: {{course.ngayTao}} </p>
+      <p class="card-text">{{course.moTa}}</p>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <img src="{{course.hinhAnh}}" class="card-img-top" alt="{{course.hinhAnh}}">
+    <p style="margin: 0;">Khóa học bao gồm:</p>
+    <p style="margin: 0;">48 giời học</p>
+    <p>20 videos</p>
+    <a routerLink="/auth" class="btn btn-danger">Ghi Danh</a>
+  </div>
+</div>
+</div>

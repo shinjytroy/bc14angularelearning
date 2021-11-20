@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active"
+          >About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/list-course" routerLinkActive="active"
+          >List Course</a>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+        Danh Mục Khóa Học
+        </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" 
+        *ngFor="let grand of grandCourse" 
+        routerLink="/list-grand-course/{{grand.maDanhMuc}}"
+          >{{grand.tenDanhMuc}}</a>
+      </div>
+      </li>
+    </ul>
+  </div>
+  <!-- Seach -->
+  <div class="collapse navbar-collapse " id="collapsibleNavbar">
+    <form class="form-inline" action="/action_page.php">
+      <input class="form-control mr-sm-2" type="text" placeholder="Điền từ khóa">
+      <button class="btn btn-success" type="submit">Tìm Kiếm</button>
+    </form>
+  </div>
+  <!-- Đăng nhập, Đăng ký -->
+  <div class="collapse navbar-collapse " id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/register"
+          routerLinkActive="active"
+          >Đăng ký</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/auth" routerLinkActive="active"
+          >Đăng Nhập</a>
+      </li>
+    </ul>
+  </div>
+</nav>
