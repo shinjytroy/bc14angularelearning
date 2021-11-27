@@ -14,7 +14,10 @@ export class AuthInterceptor implements HttpInterceptor {
         const userInfo: any = localStorage.getItem("UserAdmin");
         authToken = JSON.parse(userInfo).accessToken;
     }
-
+    if(localStorage.getItem('UserClient')){
+        const userInfoClient: any = localStorage.getItem('UserClient');
+        authToken = JSON.parse(userInfoClient).accessToken;
+    }
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.
     const authReq = req.clone({

@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     if(localStorage.getItem("UserAdmin")){
       //Đã login
       return true;
-      //C
+    
     }
     //Chưa login - chuyển hướng về /auth
     this.router.navigate(['/auth']);

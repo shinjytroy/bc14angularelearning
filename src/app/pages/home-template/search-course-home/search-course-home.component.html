@@ -1,0 +1,26 @@
+<h5>Kết quả tìm kiếm</h5>
+<div class="container">
+    <div>
+      <ng-container *ngIf="searchListCourse">
+        <div class="p-2" *ngFor="let searchCourse of searchListCourse">
+            <div class="d-flex">
+                <div class="col-md-2" >
+                    <img src="{{searchCourse.hinhAnh}}" class="card-img-top" style="width: 100%;" alt="{{searchCourse.hinhAnh}}">
+                </div>
+                <div class="col-md-4" >
+                    <a >
+                        <h3 routerLink="/detail/{{searchCourse.maKhoaHoc}}">{{searchCourse.tenKhoaHoc}}</h3>
+                    </a>
+                    <p>Số lượng học viên: {{searchCourse.soLuongHocVien}}</p>
+                    <p>Lượt xem: {{searchCourse.luotXem}}</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-success" routerLink="/auth">Đăng Ký</a>
+                </div>
+            </div>
+                <p class="card-text">{{searchCourse.moTa}}</p>
+            <hr />
+        </div>
+      </ng-container>
+    </div>
+  </div>

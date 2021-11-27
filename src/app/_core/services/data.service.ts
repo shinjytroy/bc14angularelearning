@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 
 // let urlApi = 'https://elearning0706.cybersoft.edu.vn/api'
   let urlApi = '';
+  let id: any;
 @Injectable({
   providedIn: 'root',
 })
@@ -27,6 +28,19 @@ export class DataService {
   post(uri: any, data: any): Observable<any>{
     const url = `${urlApi}/${uri}`;
     return this.http.post(url, data).pipe(
+      tap(() => {}),
+      catchError((error: any) => {
+        return this.handleError(error);
+      })
+    );
+  }
+
+  put(uri: any, data: any): Observable<any>{
+    const url = `${urlApi}/${uri}`;
+    // let options: any = {
+    //   responseType: 'text'
+    // };
+    return this.http.put(url, data).pipe(
       tap(() => {}),
       catchError((error: any) => {
         return this.handleError(error);

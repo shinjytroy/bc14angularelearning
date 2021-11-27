@@ -1,0 +1,63 @@
+
+<div class="container mt-5">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" (click)="changeChoice()" >Thông Tin Cá Nhân</button>
+          <button class="nav-link " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="fasle" (click)="changeChoice(); getCourseChoice()" >Khóa Học Của Tôi</button>
+        </div>
+      </nav>
+      <div *ngIf="isChoice1; else isChoice2">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <label class="mt-3">Họ Tên:</label>
+                        <input type="text" class="form-control"  value="{{profileDetail.hoTen}}" [disabled]="disabled" >
+                        <label class="mt-3">Email:</label>
+                        <input type="text" class="form-control"  value="{{profileDetail.email}}" [disabled]="disabled" >
+                        <label class="mt-3">Số ĐT:</label>
+                        <input type="text" class="form-control"  value="{{profileDetail.soDT}}" [disabled]="disabled"> 
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mt-3">Tài khoản:</label>
+                        <input type="text" class="form-control"  value="{{profileDetail.taiKhoan}}" [disabled]="disabled" >
+                        <label class="mt-3">Mật khẩu:</label>
+                        <input type="text" class="form-control"  value="{{profileDetail.matKhau}}" [disabled]="disabled" >
+                        <div *ngIf="isUpdate; else wasUpdate">
+                            <a class="btn btn-success" style="margin-top: 50px;" (click)="updateButton()" >Cập Nhật</a>
+                        </div>
+                        <ng-template #wasUpdate>
+                            <a class="btn btn-primary" style="margin:50px 10px 0 10px;" (click)="capNhatTK(authProfile)" >Save</a>
+                            <a class="btn btn-secondary" style="margin:50px 10px 0 10px;" (click)="updateButton()">Close</a>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <ng-template #isChoice2>
+        <h3 class="mt-3">Các khóa học đã tham gia</h3>
+        <ng-container *ngIf="listCourseChoise">
+            <div class="p-2" *ngFor="let choice of listCourseChoise">
+                <div class="d-flex">
+                    <div class="col-md-2" >
+                        <img src="{{choice.hinhAnh}}" class="card-img-top" style="width: 100%;" alt="{{choice.hinhAnh}}">
+                    </div>
+                    <div class="col-md-4" >
+                        <a >
+                            <h3 routerLink="/detail/{{choice.maKhoaHoc}}">{{choice.chiTietKhoaHocGhiDanh.tenKhoaHoc}}</h3>
+                        </a>
+                        <p>Số lượng học viên: {{choice.soLuongHocVien}}</p>
+                        <p>Lượt xem: {{choice.luotXem}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-success" routerLink="/auth">Đăng Ký</a>
+                    </div>
+                </div>
+                    <p class="card-text">{{choice.moTa}}</p>
+                <hr />
+            </div>
+          </ng-container>
+      </ng-template>
+      
+</div>

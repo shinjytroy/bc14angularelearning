@@ -53,6 +53,18 @@ const routes: Routes = [
             (m) => m.ListGrandCourseModule
           ),
       },
+      {
+        path: 'search',
+        loadChildren: () => 
+        import('./search-course-home/search-course-home.module').then(
+          (m) => m.SearchCourseHomeModule
+        ),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+        import('./profile/profile.module').then((m)=> m.ProfileModule)
+      }
     ],
   },
 ];

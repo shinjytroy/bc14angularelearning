@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '@services/data.service';
-import { ShareDataService } from '@services/share-data.service';
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-list-grand-course',
@@ -17,7 +17,6 @@ export class ListGrandCourseComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private data: DataService,
-    private shareData: ShareDataService,
   ) {  }
 
   ngOnInit(): void {
@@ -33,10 +32,9 @@ export class ListGrandCourseComponent implements OnInit {
   getCoursesOfGrand(){
     this.subCoursesOfGrand = this.data.get(`QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${this.id}&MaNhom=GP01`).subscribe((result: any) => {
       this.coursesOfGrand = result;
-      console.log(result);
+      // console.log(result);
     });
 
-  
   }
   
 }

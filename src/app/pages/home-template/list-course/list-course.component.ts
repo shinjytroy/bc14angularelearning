@@ -49,5 +49,6 @@ export class ListCourseComponent implements OnInit {
   //Tiết kiệm tài nguyên bằng cách hủy đăng ký khi mình đã gọi tới API
   ngOnDestroy(){
     this.subListCourse.unsubscribe();
+    this.subGrandCourse.unsubscribe();
   }
 }

@@ -10,6 +10,9 @@ import { DataService } from 'src/app/_core/services/data.service';
 export class DetailCourseComponent implements OnInit {
   course: any;
   id: any;
+  testIsLogin: any;
+  userInfo: any;
+  authProfile: any;
   constructor(
     private activatedRoute: ActivatedRoute, 
     private dataService: DataService) { }
@@ -17,6 +20,11 @@ export class DetailCourseComponent implements OnInit {
   ngOnInit(): void {
     this.getParamsFromUrl();
     this.getDetailCourse();
+
+    this.testIsLogin = localStorage.getItem('UserClient')
+    
+    this.userInfo = localStorage.getItem('UserClient')
+    this.authProfile = JSON.parse(this.userInfo);
   }
   getParamsFromUrl(){
     //Lấy 1 param từ URL
@@ -35,4 +43,13 @@ export class DetailCourseComponent implements OnInit {
       this.course = result;
     });
   }
+  
+  submitCourse(user: any){
+    this.dataService.post(`QuanLyKhoaHoc/DangKyKhoaHoc?maKhoaHoc=${this.id}`, this.authProfile).subscribe((item: any) => {
+      
+      user.push(item);
+
+    })
+  }
+  
 }

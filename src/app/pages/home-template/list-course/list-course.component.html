@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <ng-container *ngIf="listCourse">
-      <div class="col-md-3" *ngFor="let course of listCourse">
+      <div class="col-md-3" *ngFor="let course of listCourse | slice:0:8">
         <app-course [course]="course"></app-course>
       </div>
     </ng-container>

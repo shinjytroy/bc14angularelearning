@@ -48,12 +48,16 @@
   <!-- Seach -->
   <div class="collapse navbar-collapse " id="collapsibleNavbar">
     <form class="form-inline" action="/action_page.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="Điền từ khóa">
-      <button class="btn btn-success" type="submit">Tìm Kiếm</button>
+      <input class="form-control mr-sm-2" type="text" placeholder="Điền từ khóa"
+      [value]="tuKhoa" #search
+      >
+      <a class="nav-link btn btn-success"
+      routerLink= "/search"
+      (click)="searchHome(search.value)">Tìm Kiếm</a>
     </form>
   </div>
   <!-- Đăng nhập, Đăng ký -->
-  <div class="collapse navbar-collapse " id="collapsibleNavbar">
+  <div *ngIf="isLogin; else PleaseLogin" class="collapse navbar-collapse " id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a
@@ -68,4 +72,10 @@
       </li>
     </ul>
   </div>
+  <ng-template #PleaseLogin>
+    <div>
+      <h5 class="text-light m-2" style="text-align: center; display: inline;">Xin chào {{authProfile.hoTen}}</h5>
+      <button class="btn btn-danger" style="display: inline;" (click)="logout()">Logout</button>
+    </div>
+  </ng-template>
 </nav>

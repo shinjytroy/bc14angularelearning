@@ -15,13 +15,14 @@ export class RegisterComponent implements OnInit {
   }
 register(user: any){
   user.maNhom ="GP01";
-  console.log(user);
+  user.maLoaiNguoiDung = "HV"
   this.dataService.post('QuanLyNguoiDung/DangKy', user).subscribe((result)=>{
-    console.log(result);
+    user.push(result);
   })
 }
 
 @HostListener('window:beforeunload', ['$event'])
+
 canDeactivateRegister(){
   return !this.registerForm.dirty;
 }
