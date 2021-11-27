@@ -20,7 +20,7 @@ export class DetailCourseComponent implements OnInit {
   ngOnInit(): void {
     this.getParamsFromUrl();
     this.getDetailCourse();
-
+    
     this.testIsLogin = localStorage.getItem('UserClient')
     
     this.userInfo = localStorage.getItem('UserClient')
@@ -45,7 +45,7 @@ export class DetailCourseComponent implements OnInit {
   }
   
   submitCourse(user: any){
-    this.dataService.post(`QuanLyKhoaHoc/DangKyKhoaHoc?maKhoaHoc=${this.id}`, this.authProfile).subscribe((item: any) => {
+    this.dataService.post(`QuanLyKhoaHoc/DangKyKhoaHoc?maKhoaHoc=${this.course.maKhoaHoc}`, this.authProfile).subscribe((item: any) => {
       
       user.push(item);
 

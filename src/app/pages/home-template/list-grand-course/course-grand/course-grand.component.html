@@ -2,7 +2,7 @@
     <img class="card-img-top" [src]="course.hinhAnh" alt="" />
     <div class="card-body">
       <h4 class="card-title">{{ course.tenKhoaHoc }}</h4>
-      <p>{{course.moTa}}</p>
+      <p>{{course.moTa | slice: 1:100}}</p>
       </div>
       <!-- Truyền 1 param -->
       <div class="card-footer">

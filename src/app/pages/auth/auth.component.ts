@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
     else if(result.maLoaiNguoiDung === "HV"){
       //Lưu trạng thái xuống Local Storage
       localStorage.setItem("UserClient",JSON.stringify(result));
-      //Chuyển hướng tới trang Home (redirect)
+      //Chuyển hướng tới trang Profile (redirect)
       this.router.navigate(['profile']);
       
     }
@@ -45,6 +45,6 @@ export class AuthComponent implements OnInit {
   clickLogin(){
     this.isLogin = !this.isLogin;
     this.shareData.sharingData(this.isLogin);
-    console.log(this.isLogin)
+    // console.log(this.isLogin)
   }
 }

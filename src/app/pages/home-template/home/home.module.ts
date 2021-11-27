@@ -7,6 +7,8 @@ import { ChildHomeComponent } from './child-home/child-home.component';
 import { FormsModule } from '@angular/forms';
 import { ShareModuleModule } from 'src/app/_core/shares/share-module/share-module.module';
 import { MaterialModule } from 'src/app/_core/shares/material-module';
+import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
+
 
 
 
@@ -14,6 +16,8 @@ import { MaterialModule } from 'src/app/_core/shares/material-module';
   declarations: [
     HomeComponent,
     ChildHomeComponent,
+    CarouselHomeComponent,
+    
   ],
   imports: [
     CommonModule,

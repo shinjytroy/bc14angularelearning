@@ -14,6 +14,7 @@ export class SearchCourseHomeComponent implements OnInit {
   tuKhoa: any = "";
   searchListCourse: any = "";
   subSearchListCourse: any;
+  testIsLogin: any;
   constructor(
     private data: DataService,
     private shareData: ShareDataService,
@@ -22,7 +23,7 @@ export class SearchCourseHomeComponent implements OnInit {
   ngOnInit(): void {
     this.shareData.shareCourse.subscribe((item: any)=>{
     this.tuKhoa = item;
-    
+    this.testIsLogin = localStorage.getItem('UserClient')
     // console.log(this.tuKhoa)
     this.SearchCourseHome();
     });

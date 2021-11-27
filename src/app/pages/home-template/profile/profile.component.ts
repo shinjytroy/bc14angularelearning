@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   disabled: any = true;
   isUpdate: boolean = true;
   isChoice1: any = true;
-  listCourseChoise: any = "";
+  listCourseChoise: any;
   id: any
   constructor(
     private dataService: DataService
@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
   getProfile(){
     this.subProfileDetail = this.dataService.post('QuanLyNguoiDung/ThongTinNguoiDung', this.authProfile).subscribe((result)=>{
       this.profileDetail = result;
+      console.log(this.profileDetail)
     })
   }
   capNhatTK(user: any) {
@@ -46,7 +47,7 @@ export class ProfileComponent implements OnInit {
     this.isChoice1 = ! this.isChoice1;
   }
   getCourseChoice(){
-    this.dataService.post("QuanLyNguoiDung/ThongTinTaiKhoan", this.authProfile).subscribe((result) => {
+    this.dataService.post("QuanLyNguoiDung/ThongTinNguoiDung", this.authProfile).subscribe((result) => {
       this.listCourseChoise = result;
     })
   }

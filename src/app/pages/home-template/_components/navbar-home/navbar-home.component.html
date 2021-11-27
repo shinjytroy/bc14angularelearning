@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">CyberSoft</a>
 
   <!-- Toggler/collapsibe Button -->
   <button
@@ -74,7 +74,7 @@
   </div>
   <ng-template #PleaseLogin>
     <div>
-      <h5 class="text-light m-2" style="text-align: center; display: inline;">Xin chào {{authProfile.hoTen}}</h5>
+      <a class="text-light m-2" style="text-align: center; display: inline;" routerLink="/profile">Xin chào {{authProfile.hoTen}}</a>
       <button class="btn btn-danger" style="display: inline;" (click)="logout()">Logout</button>
     </div>
   </ng-template>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeTemplateRoutingModule } from './home-template-routing.module';
 import { HomeTemplateComponent } from './home-template.component';
 import { NavbarHomeComponent } from './_components/navbar-home/navbar-home.component';
+import { FooterHomeComponent } from './_components/footer-home/footer-home.component';
 
 
 
@@ -12,6 +13,7 @@ import { NavbarHomeComponent } from './_components/navbar-home/navbar-home.compo
   declarations: [
     HomeTemplateComponent,
     NavbarHomeComponent,
+    FooterHomeComponent,
     
     
   ],

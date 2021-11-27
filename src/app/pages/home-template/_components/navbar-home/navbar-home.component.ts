@@ -28,6 +28,8 @@ export class NavbarHomeComponent implements OnInit {
     
     this.userInfo = localStorage.getItem('UserClient')
     this.authProfile = JSON.parse(this.userInfo);
+
+    
   }
 
   getGrandCourse(){
@@ -41,7 +43,7 @@ export class NavbarHomeComponent implements OnInit {
     this.shareData.sharingData(this.tuKhoa);
   }
   SetisLogin(){
-    if(localStorage.getItem('UserClient')){
+    if(localStorage.getItem('UserClient') || localStorage.getItem('UserAdmin')){
       this.isLogin = false;
     }
     else {
@@ -53,5 +55,6 @@ export class NavbarHomeComponent implements OnInit {
   logout() {
     this.isLogin = !this.isLogin;
     localStorage.removeItem("UserClient");
+    localStorage.removeItem("UserAdmin");
   }
 }
