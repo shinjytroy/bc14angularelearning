@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInfo = localStorage.getItem('UserClient')
+    this.userInfo = localStorage.getItem('UserAdmin')
     this.authProfile = JSON.parse(this.userInfo);
     this.getProfile()
   }
@@ -34,12 +35,12 @@ export class ProfileComponent implements OnInit {
   getProfile(){
     this.subProfileDetail = this.dataService.post('QuanLyNguoiDung/ThongTinNguoiDung', this.authProfile).subscribe((result)=>{
       this.profileDetail = result;
-      console.log(this.profileDetail)
+      // console.log(this.profileDetail)
     })
   }
-  capNhatTK(user: any) {
-    this.dataService.put('QuanLyNguoiDung/CapNhatThongTinNguoiDung', this.authProfile).subscribe((item) => {
-      user.push(item)
+  capNhatTK() {
+    this.dataService.put('QuanLyNguoiDung/CapNhatThongTinNguoiDung', this.profileDetail).subscribe((item) => {
+      
       
     })
   }

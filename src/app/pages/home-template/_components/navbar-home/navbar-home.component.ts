@@ -27,6 +27,7 @@ export class NavbarHomeComponent implements OnInit {
     this.SetisLogin();
     
     this.userInfo = localStorage.getItem('UserClient')
+    this.userInfo = localStorage.getItem('UserAdmin')
     this.authProfile = JSON.parse(this.userInfo);
 
     
