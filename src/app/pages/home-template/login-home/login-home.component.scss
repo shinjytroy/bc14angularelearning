@@ -1,0 +1,15 @@
+.login__background {
+    background-image: url('./../../../../assets/dangNhap.png');
+     width: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login__form {
+    margin: 48px 0;
+    padding: 50px 50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: white;
+}

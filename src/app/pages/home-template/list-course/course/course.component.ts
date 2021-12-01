@@ -10,7 +10,10 @@ export class CourseComponent implements OnInit {
   @Input() course: any;
   constructor(private shareData: ShareDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.shareData.sharingData(this.course);
+    console.log(this.course)
+  }
   
   xemNhanh(){
     this.shareData.sharingData(this.course);

@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<div class="container my-5">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" (click)="changeChoice()" >Thông Tin Cá Nhân</button>
@@ -9,29 +9,32 @@
       <div *ngIf="isChoice1; else isChoice2">
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-                <div class="row">
-                    <div class="col-md-6 mt-3">
-                        <label class="mt-3">Họ Tên:</label>
-                        <input type="text" class="form-control"  value="{{profileDetail.hoTen}}" [disabled]="disabled" >
-                        <label class="mt-3">Email:</label>
-                        <input type="text" class="form-control"  value="{{profileDetail.email}}" [disabled]="disabled" >
-                        <label class="mt-3">Số ĐT:</label>
-                        <input type="text" class="form-control"  value="{{profileDetail.soDT}}" [disabled]="disabled"> 
-                    </div>
-                    <div class="col-md-6 mt-3">
-                        <label class="mt-3">Tài khoản:</label>
-                        <input type="text" class="form-control"  value="{{profileDetail.taiKhoan}}" [disabled]="disabled" >
-                        <label class="mt-3">Mật khẩu:</label>
-                        <input type="text" class="form-control"  value="{{profileDetail.matKhau}}" [disabled]="disabled" >
-                        <div *ngIf="isUpdate; else wasUpdate">
-                            <a class="btn btn-success" style="margin-top: 50px;" (click)="updateButton()" >Cập Nhật</a>
+                
+                    <form #profileForm="ngForm" (ngSubmit)="capNhatTK(profileForm.value)">
+                        <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <label class="mt-3">Họ Tên:</label>
+                            <input type="text" class="form-control" ngModel name="hoTen" [disabled]="disabled" >
+                            <label class="mt-3">Email:</label>
+                            <input type="text" class="form-control" ngModel name="email" [disabled]="disabled" >
+                            <label class="mt-3">Số ĐT:</label>
+                            <input type="text" class="form-control" ngModel name="soDT" [disabled]="disabled"> 
                         </div>
-                        <ng-template #wasUpdate>
-                            <a class="btn btn-primary" style="margin:50px 10px 0 10px;" (click)="capNhatTK()" >Save</a>
-                            <a class="btn btn-secondary" style="margin:50px 10px 0 10px;" (click)="updateButton()">Close</a>
-                        </ng-template>
+                        <div class="col-md-6 mt-3">
+                            <label class="mt-3">Tài khoản:</label>
+                            <input type="text" class="form-control"  ngModel name="taiKhoan" [disabled]="disabled" >
+                            <label class="mt-3">Mật khẩu:</label>
+                            <input type="text" class="form-control"  ngModel name="matKhau" [disabled]="disabled" >
+                            <div *ngIf="isUpdate; else wasUpdate">
+                                <a class="btn btn-success" style="margin-top: 50px;" (click)="updateProfile(profileForm.value)" >Cập Nhật</a>
+                            </div>
+                            <ng-template #wasUpdate>
+                                <a class="btn btn-primary" style="margin:50px 10px 0 10px;" (click)="capNhatTK(profileForm.value)">Save</a>
+                                <a class="btn btn-secondary" style="margin:50px 10px 0 10px;" (click)="closeUpdate()" >Close</a>
+                            </ng-template>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
       </div>

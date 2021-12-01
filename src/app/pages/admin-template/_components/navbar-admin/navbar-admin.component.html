@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand text-success" href="#">DASHBOARD</a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/admin/user-management"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Quản lý người dùng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/course-management" routerLinkActive="active"
+            >Quản lý khóa học</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Đăng nhập, Đăng ký -->
+  <div class="collapse navbar-collapse " id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="text-light m-2" style="text-align: center; display: inline;" >Xin chào {{authProfile.hoTen}}</a>
+        <a class="nav-link btn btn-danger fs-1 mx-2" style="display: inline;" routerLinkActive="active" (click)="logout()"
+          >Đăng Xuất</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  

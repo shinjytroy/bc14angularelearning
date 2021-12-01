@@ -18,6 +18,7 @@ register(user: any){
   user.maLoaiNguoiDung = "HV"
   this.dataService.post('QuanLyNguoiDung/DangKy', user).subscribe((result)=>{
     user.push(result);
+    alert('Đăng ký thành công')
   })
 }
 

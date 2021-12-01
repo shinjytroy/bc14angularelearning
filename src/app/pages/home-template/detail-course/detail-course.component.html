@@ -16,13 +16,7 @@
     <p style="margin: 0;">Khóa học bao gồm:</p>
     <p style="margin: 0;">48 giời học</p>
     <p>20 videos</p>
-    <ng-container *ngIf="testIsLogin; else NotLogin">
-      <a routerLink="/profile" class="btn btn-danger" (click)="submitCourse(course.maKhoaHoc)">Ghi Danh</a>
-    </ng-container>
-    <ng-template #NotLogin>
-      <a routerLink="/auth" class="btn btn-danger" (click)="submitCourse(course.maKhoaHoc)" >Ghi Danh</a>
-    </ng-template>
-    
+    <a routerLink="/detail/{maKhoaHoc}" class="btn btn-danger">Ghi Danh</a>
   </div>
 </div>
 </div>

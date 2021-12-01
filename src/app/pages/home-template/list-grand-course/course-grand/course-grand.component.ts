@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-course-grand',
   templateUrl: './course-grand.component.html',
@@ -7,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CourseGrandComponent implements OnInit {
  @Input() course: any;
-  
-  constructor() { }
+  userInfo: any;
+  authProfile: any;
+  constructor(
+
+  ) { }
 
   ngOnInit(): void {
     

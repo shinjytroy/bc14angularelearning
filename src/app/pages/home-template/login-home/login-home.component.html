@@ -1,0 +1,30 @@
+<div class="login__background">
+    <div class="container">
+        <div class="row" style="width: 50%; margin: 48px auto;">
+            <div class="col-md-12 login__form">
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+                        <h3 style="text-align: center;">ĐĂNG NHẬP</h3>
+                    <div class="form-group">
+                        <label>Tài khoản:</label>
+                        <input type="text" class="form-control" name="taiKhoan" ngModel required #TaiKhoan="ngModel" minlength="5" maxlength="15"> 
+                        <div class="alert alert-danger" *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)">
+                            <!-- Nội dung kiểm tra thẻ rỗng -->
+                            <div *ngIf="TaiKhoan.errors.required">Tài khoản không được rỗng</div>
+                            <!-- Kiểm tra độ dài ký tự -->
+                            <div *ngIf="TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength">Độ dài phải từ 7 đến 15 ký tự</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mật Khẩu:</label>
+                        <input type="password" class="form-control" name="matKhau" ngModel>
+                    </div>
+                    <div style="display: flex;">
+                        <button class="btn btn-success" style="margin: 0 auto;" [disabled]="!loginForm.valid" (click)="clickLogin()">Đăng Nhập</button>
+                        <a class="btn btn-success nav-link" routerLink="/register" style="margin: 0 auto;">Đăng ký</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

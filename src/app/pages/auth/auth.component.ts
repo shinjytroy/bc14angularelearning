@@ -30,13 +30,6 @@ export class AuthComponent implements OnInit {
       //Chuyển hướng tới trang dashBoard (redirect)
       this.router.navigate(['admin/dashboard']);
     }
-    else if(result.maLoaiNguoiDung === "HV"){
-      //Lưu trạng thái xuống Local Storage
-      localStorage.setItem("UserClient",JSON.stringify(result));
-      //Chuyển hướng tới trang Profile (redirect)
-      this.router.navigate(['profile']);
-      
-    }
     else {
       alert('Tài khoản không tồn tại')
     }
@@ -47,4 +40,5 @@ export class AuthComponent implements OnInit {
     this.shareData.sharingData(this.isLogin);
     // console.log(this.isLogin)
   }
+  
 }

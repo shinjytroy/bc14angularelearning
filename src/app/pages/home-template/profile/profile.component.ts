@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '@services/data.service';
 
 @Component({
@@ -23,26 +23,43 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInfo = localStorage.getItem('UserClient')
-    this.userInfo = localStorage.getItem('UserAdmin')
+    // console.log(this.userInfo)
     this.authProfile = JSON.parse(this.userInfo);
-    this.getProfile()
+    // console.log(this.authProfile)
+    
   }
   
-  updateButton(){
+  updateProfile(data: any){
+    this.subProfileDetail = this.dataService.post('QuanLyNguoiDung/ThongTinTaiKhoan', this.authProfile).subscribe((result)=>{
+      data.hoTen = result.hoTen;
+      data.email = result.email;
+      data.soDT = result.soDT;
+      data.taiKhoan = result.taiKhoan;
+      data.hoTen = result.hoTen;
+      // this.profileDetail = result;
+      // console.log(this.profileDetail)
+    })
     this.isUpdate = !this.isUpdate;
     this.disabled = !this.disabled;
   }
-  getProfile(){
-    this.subProfileDetail = this.dataService.post('QuanLyNguoiDung/ThongTinNguoiDung', this.authProfile).subscribe((result)=>{
-      this.profileDetail = result;
-      // console.log(this.profileDetail)
-    })
+  closeUpdate(){
+    this.disabled = !this.disabled;
+    this.isUpdate = !this.isUpdate;
   }
-  capNhatTK() {
-    this.dataService.put('QuanLyNguoiDung/CapNhatThongTinNguoiDung', this.profileDetail).subscribe((item) => {
+  // getProfile(){
+  //   this.subProfileDetail = this.dataService.post('QuanLyNguoiDung/ThongTinTaiKhoan', this.authProfile).subscribe((result)=>{
+  //     this.profileDetail = result;
       
-      
+  //     // console.log(this.profileDetail)
+  //   })
+  // }
+  capNhatTK(data: any) {
+      data.maLoaiNguoiDung = "HV";
+      data.maNhom = "GP01";
+    this.dataService.put('QuanLyNguoiDung/CapNhatThongTinNguoiDung', data).subscribe((result) => {
+      console.log(result)
     })
+    alert('Cập nhật thành công')
   }
   changeChoice(){
     this.isChoice1 = ! this.isChoice1;

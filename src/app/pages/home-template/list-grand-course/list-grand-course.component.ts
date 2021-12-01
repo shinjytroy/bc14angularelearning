@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '@services/data.service';
 import { Subscription } from 'rxjs';
+import { CourseGrandComponent } from './course-grand/course-grand.component';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./list-grand-course.component.scss']
 })
 export class ListGrandCourseComponent implements OnInit {
+  @ViewChildren(CourseGrandComponent) tagListSeat: QueryList<CourseGrandComponent> = new QueryList();
   course: any;
   id: any;
   coursesOfGrand: any;
@@ -24,7 +26,6 @@ export class ListGrandCourseComponent implements OnInit {
     this.getCoursesOfGrand();
   }
   
-
   getParamsFromUrl(){
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
     // console.log(this.id);

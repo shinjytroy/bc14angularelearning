@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ShareDataService } from '@services/share-data.service';
 import { DataService } from 'src/app/_core/services/data.service';
 
 @Component({
@@ -8,24 +9,33 @@ import { DataService } from 'src/app/_core/services/data.service';
   styleUrls: ['./detail-course.component.scss']
 })
 export class DetailCourseComponent implements OnInit {
+  
   course: any;
   id: any;
-  testIsLogin: any;
+
   userInfo: any;
   authProfile: any;
   constructor(
     private activatedRoute: ActivatedRoute, 
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private shareData: ShareDataService,    
+    ) { }
 
   ngOnInit(): void {
     this.getParamsFromUrl();
     this.getDetailCourse();
+    this.shareData.shareCourse.subscribe((result: any)=>{
+      this.course = result;
+      // console.log(result)
+     });
     
-    this.testIsLogin = localStorage.getItem('UserClient')
-    
+  
     this.userInfo = localStorage.getItem('UserClient')
     this.authProfile = JSON.parse(this.userInfo);
+    this.getSubmitCourse()
   }
+  
+
   getParamsFromUrl(){
     //Lấy 1 param từ URL
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
@@ -33,7 +43,7 @@ export class DetailCourseComponent implements OnInit {
 
     //Lấy nhiều param từ URL
     this.activatedRoute.queryParams.subscribe((params: any)=>{
-    console.log(params);
+    // console.log(params);
     })
   }
   getDetailCourse(){
@@ -43,13 +53,11 @@ export class DetailCourseComponent implements OnInit {
       this.course = result;
     });
   }
-  
-  submitCourse(user: any){
-    this.dataService.post(`QuanLyKhoaHoc/DangKyKhoaHoc?maKhoaHoc=${this.course.maKhoaHoc}`, this.authProfile).subscribe((item: any) => {
+  getSubmitCourse(){
+    this.dataService.post('QuanLyKhoaHoc/DangKyKhoaHoc', this.authProfile).subscribe((item: any) => {
       
-      user.push(item);
+      this.course.push(item);
 
     })
   }
-  
 }

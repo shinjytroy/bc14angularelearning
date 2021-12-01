@@ -4,6 +4,7 @@
         <div class="row" style="width: 50%; align-items: center;">
             <div class="register__form col-md-12">
                 <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+                    <h3 style="text-align: center;">ĐĂNG KÝ</h3>
                     <div class="form-group">
                         <label>Tài khoản:</label>
                         <input type="text" class="form-control" name="taiKhoan" ngModel required #TaiKhoan="ngModel" minlength="7" maxlength="15"> 
@@ -68,8 +69,11 @@
                             <div *ngIf="soDT.errors.required">Vui lòng nhập số điện thoại</div>
                         </div>
                     </div>
-    
-                    <button class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
+                    <div style="display: flex;">
+                        <button class="btn btn-success" style="margin: 0 auto;" [disabled]="!registerForm.valid">Register</button>
+                        <a class="btn btn-success nav-link" style="margin: 0 auto;" routerLink="/login">Đăng nhập</a>
+                    </div>
+                    
                 </form>
             </div>
         </div>

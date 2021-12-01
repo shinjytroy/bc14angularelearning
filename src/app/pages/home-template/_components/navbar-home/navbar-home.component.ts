@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '@services/data.service';
 import { ShareDataService } from '@services/share-data.service';
@@ -13,7 +14,7 @@ export class NavbarHomeComponent implements OnInit {
   tuKhoa: any = "";
   grandCourse: any;
   subGrandCourse = new Subscription();
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   userInfo: any
   authProfile: any
   constructor(
@@ -24,12 +25,12 @@ export class NavbarHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGrandCourse(); 
-    this.SetisLogin();
-    
     this.userInfo = localStorage.getItem('UserClient')
-    this.userInfo = localStorage.getItem('UserAdmin')
     this.authProfile = JSON.parse(this.userInfo);
-
+    // console.log(this.authProfile)
+    this.SetisLogin();
+  }
+  ngOnChange(): void {
     
   }
 
@@ -44,7 +45,7 @@ export class NavbarHomeComponent implements OnInit {
     this.shareData.sharingData(this.tuKhoa);
   }
   SetisLogin(){
-    if(localStorage.getItem('UserClient') || localStorage.getItem('UserAdmin')){
+    if(localStorage.getItem('UserClient')){
       this.isLogin = false;
     }
     else {
@@ -56,6 +57,6 @@ export class NavbarHomeComponent implements OnInit {
   logout() {
     this.isLogin = !this.isLogin;
     localStorage.removeItem("UserClient");
-    localStorage.removeItem("UserAdmin");
+    this.router.navigate(['']);
   }
 }

@@ -12,11 +12,5 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addUser(user: any){
-    user.maLoaiNguoiDung = "HV";
-    user.maNhom = "GP01";
-    this.data.post("QuanLyNguoiDung/ThemNguoiDung", user).subscribe((result)=>{
-      console.log(result);
-    })
-  }
+  
 }

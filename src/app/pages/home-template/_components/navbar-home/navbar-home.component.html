@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">CyberSoft</a>
+  <a class="navbar-brand text-danger" href="#">CYBERSOFT</a>
 
   <!-- Toggler/collapsibe Button -->
   <button
@@ -57,7 +57,7 @@
     </form>
   </div>
   <!-- Đăng nhập, Đăng ký -->
-  <div *ngIf="isLogin; else PleaseLogin" class="collapse navbar-collapse " id="collapsibleNavbar">
+  <div *ngIf="isLogin; else WasLogin" class="collapse navbar-collapse " id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a
@@ -67,15 +67,16 @@
           >Đăng ký</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/auth" routerLinkActive="active"
+        <a class="nav-link" routerLink="/login" routerLinkActive="active"
           >Đăng Nhập</a>
       </li>
     </ul>
   </div>
-  <ng-template #PleaseLogin>
+  <ng-template #WasLogin>
     <div>
-      <a class="text-light m-2" style="text-align: center; display: inline;" routerLink="/profile">Xin chào {{authProfile.hoTen}}</a>
-      <button class="btn btn-danger" style="display: inline;" (click)="logout()">Logout</button>
+      <a class="text-light m-2" style="text-align: center; display: inline;" >Xin chào {{authProfile.hoTen}}</a>
+      <button class="btn btn-danger fs-1 mx-2" style="display: inline;" routerLink="/profile" >Profile</button>
+      <button class="btn btn-danger fs-1" style="display: inline;" (click)="logout()">Logout</button>
     </div>
   </ng-template>
 </nav>
