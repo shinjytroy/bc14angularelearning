@@ -5,7 +5,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 // let urlApi = 'https://elearning0706.cybersoft.edu.vn/api'
-  let urlApi = '';
+  let urlApi: any;
   let id: any;
 @Injectable({
   providedIn: 'root',
